@@ -29,6 +29,10 @@ export class ApiService {
     return this.http.post<Cake>(data, httpOptions);
   }
 
+  updateCake(id, data): Observable<any> {
+    return this.http.put(`${apiUrl}/${id}`, data, httpOptions);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
