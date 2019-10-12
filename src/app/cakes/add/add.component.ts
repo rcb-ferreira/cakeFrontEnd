@@ -9,23 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-
   cakeForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) { }
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
     this.cakeForm = this.formBuilder.group({
-      title: ['', Validators.compose([Validators.required])],
+      name: ['', Validators.compose([Validators.required])],
+      comment: ['', Validators.compose([Validators.required])],
+      imageUrl: ['', Validators.compose([Validators.required])],
+      yumFactor: ['', Validators.compose([Validators.required])]
     });
   }
 
-  addTodo() {
-    const payload = {
-      name: this.cakeForm.controls.title.value,
-    };
+  addCake(payload) {
 
-    this.api.addCakes(payload)
+    this.api.addCakes(payload.value)
       .subscribe(res => {
         this.router.navigate(['/']);
       }, (err) => {

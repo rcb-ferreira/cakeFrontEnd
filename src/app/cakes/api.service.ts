@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   addCakes(data): Observable<Cake> {
-    return this.http.post<Cake>(data, httpOptions);
+    return this.http.post<Cake>(apiUrl, data, httpOptions);
   }
 
   updateCake(id, data): Observable<any> {
