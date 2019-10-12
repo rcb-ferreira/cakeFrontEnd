@@ -21,6 +21,14 @@ export class ApiService {
     return this.http.get<Cake[]>(apiUrl, httpOptions);
   }
 
+  getCake(id): Observable<Cake[]> {
+    return this.http.get<Cake[]>(`${apiUrl}/${id}`, httpOptions);
+  }
+
+  addCakes(data): Observable<Cake> {
+    return this.http.post<Cake>(data, httpOptions);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

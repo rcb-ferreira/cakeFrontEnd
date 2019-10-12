@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  constructor() { }
+  cakeForm: FormGroup;
+  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) { }
+
 
   ngOnInit() {
+    this.cakeForm = this.formBuilder.group({
+      title: ['', Validators.compose([Validators.required])],
+    });
+  }
+
+  addTodo() {
+    const payload = {
+      name: this.cakeForm.controls.title.value,
+    };
+
+    this.api.addCakes(payload)
+      .subscribe(res => {
+        this.router.navigate(['/']);
+      }, (err) => {
+        console.log(err);
+      });
   }
 
 }

@@ -18,6 +18,8 @@ export class CakesComponent implements OnInit {
     this.api.getCakes().subscribe(data => this.data = data);
   }
 
-  deleteCake(id, index) {}
+  deleteCake(id, index) {
+    console.log(id);
+  }
 
 }
