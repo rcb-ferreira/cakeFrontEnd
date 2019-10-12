@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { ApiService } from '../api.service';
-import { Cake } from './cake';
 import { ApiService } from './api.service';
+import { Cake } from './cake';
 
 @Component({
   selector: 'app-cakes',
@@ -14,12 +13,15 @@ export class CakesComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-
     this.api.getCakes().subscribe(data => this.data = data);
   }
 
   deleteCake(id, index) {
-    console.log(id);
+    this.api.deleteCake(id)
+      .subscribe(res => {
+        this.data.splice(index, 1);
+      }, (err) => {
+        console.log(err);
+      });
   }
-
 }

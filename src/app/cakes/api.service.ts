@@ -33,6 +33,10 @@ export class ApiService {
     return this.http.put(`${apiUrl}/${id}`, data, httpOptions);
   }
 
+  deleteCake(id): Observable<Cake> {
+    return this.http.delete<Cake>(`${apiUrl}/${id}`, httpOptions);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
