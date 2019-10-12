@@ -3,8 +3,9 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Cake } from './cake';
+import { environment } from 'src/environments/environment';
 
-const apiUrl = 'http://localhost:4000/api/v1/cakes';
+const apiUrl = environment.api;
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
