@@ -1,9 +1,9 @@
 <div class="row mt-5">
     <div class="col-md-6 mx-auto">
-        <h2 class="text-center">Update Cake</h2>
+        <h2 class="text-center">{{pageTitle}}</h2>
         <div class="card mt-3">
             <div class="card-body">
-                <form [formGroup]="cakeForm" (ngSubmit)="updateCake(cakeForm.value)">
+                <form [formGroup]="cakeForm" (ngSubmit)="submitCakeForm(cakeForm)">
                     <div class="form-group">
                         <label class="col-md-4">Name </label>
                         <input type="text" class="form-control" formControlName="name" />

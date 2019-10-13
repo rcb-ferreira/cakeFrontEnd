@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CakesComponent } from './cakes/cakes.component';
-import { AddComponent } from './cakes/add/add.component';
-import { EditComponent } from './cakes/edit/edit.component';
+import { FormComponent } from './cakes/form/form.component';
 
 const routes: Routes = [
   {
@@ -13,13 +12,13 @@ const routes: Routes = [
   },
   {
     path: 'cakes/add',
-    component: AddComponent,
-    data: { title: 'Add Cakes' }
+    component: FormComponent,
+    data: { title: 'Add Cakes', type: 'add' }
   },
   {
     path: 'cakes/edit/:id',
-    component: EditComponent,
-    data: { title: 'Edit cakes' }
+    component: FormComponent,
+    data: { title: 'Edit Cakes', type: 'edit' }
   }
 ];
 

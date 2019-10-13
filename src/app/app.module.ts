@@ -6,17 +6,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CakesComponent } from './cakes/cakes.component';
-import { AddComponent } from './cakes/add/add.component';
-import { EditComponent } from './cakes/edit/edit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { FormComponent } from './cakes/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CakesComponent,
-    AddComponent,
-    EditComponent
+    FormComponent
   ],
   imports: [
     BrowserModule,
