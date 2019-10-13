@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { CakesComponent } from './cakes/cakes.component';
 import { AddComponent } from './cakes/add/add.component';
 import { EditComponent } from './cakes/edit/edit.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { EditComponent } from './cakes/edit/edit.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
