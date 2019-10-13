@@ -9,8 +9,12 @@ import { Cake } from './cake';
 })
 export class CakesComponent implements OnInit {
   data: Cake[] = [];
+  showAll: boolean;
+  cakeIndex: number;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {
+    this.showAll = true;
+  }
 
   ngOnInit() {
     this.api.getCakes().subscribe(data => this.data = data);
@@ -20,8 +24,16 @@ export class CakesComponent implements OnInit {
     this.api.deleteCake(id)
       .subscribe(res => {
         this.data.splice(index, 1);
+
+        // Reset view
+        this.toggleItem(0);
       }, (err) => {
         console.log(err);
       });
+  }
+
+  toggleItem(index) {
+    this.showAll = !this.showAll;
+    this.cakeIndex = index;
   }
 }

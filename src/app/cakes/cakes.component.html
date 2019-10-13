@@ -7,25 +7,41 @@
         <table class="table table-bordered mt-5">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Comment</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Yum Factor</th>
-                    <th scope="col">&nbsp;</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th *ngIf="!showAll">Comment</th>
+                    <th *ngIf="!showAll">Yum Factor</th>
+                    <th>
+                        <span *ngIf="showAll">&nbsp;</span>
+                        <button *ngIf="!showAll" type="button" class="btn btn-link" (click)="toggleItem(0)">List All</button>
+                    </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="showAll else showItem">
                 <tr *ngFor="let item of data; let i = index;">
                     <td>{{item.name}}</td>
-                    <td>{{item.comment}}</td>
                     <td>{{item.imageUrl}}</td>
-                    <td>{{item.yumFactor}}</td>
-                    <td class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger" (click)="deleteCake(item.id, i)">Delete</button>
-                        <a [routerLink]="['/cakes/edit/', item.id]" class="btn btn-primary">Edit</a>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-link" (click)="toggleItem(i)">View</button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
+            <ng-template #showItem>
+                <tr>
+                    <td>{{data[cakeIndex].name}}</td>
+                    <td>{{data[cakeIndex].imageUrl}}</td>
+                    <td>{{data[cakeIndex].comment}}</td>
+                    <td>{{data[cakeIndex].yumFactor}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger" (click)="deleteCake(data[cakeIndex].id, cakeIndex)">Delete</button>
+                            <a [routerLink]="['/cakes/edit/', data[cakeIndex].id]" class="btn btn-primary">Edit</a>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
         </table>
         <p *ngIf="!data.length" class="text-center">Loading...</p>
     </div>
