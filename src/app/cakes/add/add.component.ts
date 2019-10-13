@@ -26,7 +26,6 @@ export class AddComponent implements OnInit {
   }
 
   addCake(payload) {
-
     this.api.addCakes(payload.value)
       .subscribe(res => {
         this.router.navigate(['/']);

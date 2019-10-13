@@ -1,8 +1,6 @@
 <div class="container mt-5">
     <h2>Cakes
-        <a class="float-right" [routerLink]="['/cakes/add']">
-            <button type="button" class="btn btn-primary">Add</button>
-        </a>
+        <a class="float-right btn btn-primary" [routerLink]="['/cakes/add']">Add</a>
     </h2>
 
     <div class="table-responsive-xl">
@@ -18,18 +16,17 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of data; let i = index;">
-                    <td width="20">{{item.name}}</td>
+                    <td>{{item.name}}</td>
                     <td>{{item.comment}}</td>
                     <td>{{item.imageUrl}}</td>
                     <td>{{item.yumFactor}}</td>
-                    <td width="250">
-                        <button type="button" class="btn btn-danger mr-1" (click)="deleteCake(item.id, i)">Delete</button>
-                        <a [routerLink]="['/cakes/edit/', item.id]">
-                            <button type="button" class="btn btn-primary">Edit</button>
-                        </a>
+                    <td class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-danger" (click)="deleteCake(item.id, i)">Delete</button>
+                        <a [routerLink]="['/cakes/edit/', item.id]" class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <p *ngIf="!data.length" class="text-center">Loading...</p>
     </div>
 </div>
