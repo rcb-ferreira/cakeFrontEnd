@@ -55,7 +55,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  submitCakeForm(form: NgForm) {
+  submitCakeForm(form) {
     if (this.canEdit) {
       this.updateCake(form);
     } else {
