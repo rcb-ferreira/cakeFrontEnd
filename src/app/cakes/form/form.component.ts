@@ -14,6 +14,7 @@ export class FormComponent implements OnInit {
   cakeForm: FormGroup;
   id: number = null;
   data: any;
+  rating: any = [1, 2, 3, 4, 5];
 
   constructor(
     private formBuilder: FormBuilder,
